@@ -23,6 +23,7 @@ if [ ! -f "/usr/local/cuda/include/cudnn.h" ]; then
     wget http://developer.download.nvidia.com/compute/redist/cudnn/v7.0.5/cudnn-9.0-linux-x64-v7.tgz
     tar -zxf cudnn-9.0-linux-x64-v7.tgz
     sudo rsync -av cuda /usr/local/
+fi
 
 #install caffe2
 
