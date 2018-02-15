@@ -3,6 +3,7 @@
 # CUDA and CUDNN required before installing
 # writen by qzhu, 2018.2.15
 # version 1.01
+set -e
 sudo ls
 WORKSPACE_FOLDER=`pwd`
 echo $WORKSPACE_FOLDER
@@ -28,7 +29,7 @@ fi
 #install caffe2
 
 sudo yum --enablerepo=extras install -y epel-release
-sudo yum update
+sudo yum update -y
 sudo yum install -y automake cmake3 gcc gcc-c++ git kernel-devel leveldb-devel lmdb-devel libtool protobuf-devel python-devel python-pip snappy-devel
 git clone https://github.com/gflags/gflags.git && \
     cd gflags && \
@@ -68,7 +69,7 @@ cd $WORKSPACE_FOLDER
 sudo pip install numpy pyyaml matplotlib opencv-python setuptools Cython mock scipy
 git clone https://github.com/cocodataset/cocoapi.git
 cd cocoapi/PythonAPI
-make install
+sudo make install
 python2 setup.py install --user
 cd $WORKSPACE_FOLDER
 
