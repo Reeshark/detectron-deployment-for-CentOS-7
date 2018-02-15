@@ -65,7 +65,7 @@ cd build && cmake ..
 sudo make -j install
 cd $WORKSPACE_FOLDER
 
-sudo pip install numpy>=1.13 pyyaml>=3.12 matplotlib opencv-python>=3.2 setuptools Cython mock scipy
+sudo pip install numpy pyyaml matplotlib opencv-python setuptools Cython mock scipy
 git clone https://github.com/cocodataset/cocoapi.git
 cd cocoapi/PythonAPI
 make install
