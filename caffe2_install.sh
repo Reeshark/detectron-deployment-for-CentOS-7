@@ -41,7 +41,7 @@ git clone https://github.com/gflags/gflags.git && \
     mkdir build && cd build && \
     cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' .. && \
     make -j 8 && sudo make install && cd ../..
-sudo pip install \
+sudo pip install -U \
     flask \
     future \
     graphviz \
@@ -66,7 +66,7 @@ cd build && cmake ..
 sudo make -j install
 cd $WORKSPACE_FOLDER
 
-sudo pip install numpy pyyaml matplotlib opencv-python setuptools Cython mock scipy
+sudo pip install -U numpy pyyaml matplotlib opencv-python setuptools Cython mock scipy
 git clone https://github.com/cocodataset/cocoapi.git
 cd cocoapi/PythonAPI
 sudo make install
