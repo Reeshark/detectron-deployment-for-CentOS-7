@@ -30,7 +30,12 @@ fi
 
 sudo yum --enablerepo=extras install -y epel-release
 sudo yum update -y
-sudo yum install -y automake cmake3 gcc gcc-c++ git kernel-devel leveldb-devel lmdb-devel libtool protobuf-devel python-devel python-pip snappy-devel
+sudo yum install -y automake cmake3 gcc gcc-c++ git kernel-devel leveldb-devel \
+    lmdb-devel libtool protobuf-devel python-devel python-pip snappy-devel
+
+sudo pip install -U flask future graphviz hypothesis jupyter matplotlib numpy protobuf pydot python-nvd3 \
+    pyyaml requests scikit-image scipy setuptools six tornado opencv-python Cython mock
+
 git clone https://github.com/gflags/gflags.git && \
     cd gflags && \
     mkdir build && cd build && \
@@ -41,24 +46,6 @@ git clone https://github.com/gflags/gflags.git && \
     mkdir build && cd build && \
     cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' .. && \
     make -j 8 && sudo make install && cd ../..
-sudo pip install -U \
-    flask \
-    future \
-    graphviz \
-    hypothesis \
-    jupyter \
-    matplotlib \
-    numpy \
-    protobuf \
-    pydot \
-    python-nvd3 \
-    pyyaml \
-    requests \
-    scikit-image \
-    scipy \
-    setuptools \
-    six \
-    tornado
 
 git clone --recursive https://github.com/caffe2/caffe2
 cd caffe2 && mkdir build
@@ -66,7 +53,6 @@ cd build && cmake ..
 sudo make -j install
 cd $WORKSPACE_FOLDER
 
-sudo pip install -U numpy pyyaml matplotlib opencv-python setuptools Cython mock scipy
 git clone https://github.com/cocodataset/cocoapi.git
 cd cocoapi/PythonAPI
 sudo make install
@@ -74,7 +60,6 @@ python2 setup.py install --user
 cd $WORKSPACE_FOLDER
 
 #install detectron
-
 git clone https://github.com/facebookresearch/detectron
 cd detectron/lib && make
 
