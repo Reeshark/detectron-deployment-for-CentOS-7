@@ -7,12 +7,12 @@ WORKSPACE_FOLDER=`pwd`
 echo -e "input sudo password"
 read PASSWORD
 
-$PASSWORD | sudo -S yum --enablerepo=extras install -y epel-release
-$PASSWORD | sudo -S yum update -y
-$PASSWORD | sudo -S yum install -y automake cmake3 gcc gcc-c++ git kernel-devel leveldb-devel \
+echo $PASSWORD | sudo -S yum --enablerepo=extras install -y epel-release
+echo $PASSWORD | sudo -S yum update -y
+echo $PASSWORD | sudo -S yum install -y automake cmake3 gcc gcc-c++ git kernel-devel leveldb-devel \
     lmdb-devel libtool protobuf-devel python-devel python-pip snappy-devel
 
-$PASSWORD | sudo -S pip install -U flask future graphviz hypothesis jupyter matplotlib numpy protobuf pydot python-nvd3 \
+echo $PASSWORD | sudo -S pip install -U flask future graphviz hypothesis jupyter matplotlib numpy protobuf pydot python-nvd3 \
     pyyaml requests scikit-image scipy setuptools six tornado opencv-python Cython mock
 
 #install cmake 3.10.2
@@ -28,7 +28,7 @@ cmake --version
 if [ ! -f "/usr/local/cuda/include/cudnn.h" ]; then
     wget http://developer.download.nvidia.com/compute/redist/cudnn/v7.0.5/cudnn-9.1-linux-x64-v7.tgz
     tar -zxf cudnn-9.1-linux-x64-v7.tgz
-    $PASSWORD | sudo -S rsync -av cuda /usr/local
+    echo $PASSWORD | sudo -S rsync -av cuda /usr/local
 fi
 
 #download from github
@@ -41,20 +41,20 @@ if [ ! -d 'detectron' ]; then git clone https://github.com/facebookresearch/dete
 cd gflags && \
 mkdir build && cd build && \
 cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' .. && \
-make -j 8 && $PASSWORD | sudo -S make install && cd $WORKSPACE_FOLDER
+make -j 8 && echo $PASSWORD | sudo -S make install && cd $WORKSPACE_FOLDER
 
 cd glog && \
 mkdir build && cd build && \
 cmake3 -DBUILD_SHARED_LIBS=ON -DCMAKE_CXX_FLAGS='-fPIC' .. && \
-make -j 8 && $PASSWORD | sudo -S make install && cd $WORKSPACE_FOLDER
+make -j 8 && echo $PASSWORD | sudo -S make install && cd $WORKSPACE_FOLDER
 
 cd caffe2 && mkdir build
 cd build && cmake ..
-$PASSWORD | sudo -S make -j install
+echo $PASSWORD | sudo -S make -j install
 cd $WORKSPACE_FOLDER
 
 cd cocoapi/PythonAPI
-$PASSWORD | sudo -S make install
+echo $PASSWORD | sudo -S make install
 python2 setup.py install --user
 cd $WORKSPACE_FOLDER
 
