@@ -26,7 +26,9 @@ cmake --version
 
 #install cudnn
 if [ ! -f "/usr/local/cuda/include/cudnn.h" ]; then
-    wget http://developer.download.nvidia.com/compute/redist/cudnn/v7.0.5/cudnn-9.1-linux-x64-v7.tgz
+    if [ ! -f "cudnn-9.1-linux-x64-v7.tgz" ]; then
+        wget http://developer.download.nvidia.com/compute/redist/cudnn/v7.0.5/cudnn-9.1-linux-x64-v7.tgz
+    fi
     tar -zxf cudnn-9.1-linux-x64-v7.tgz
     echo $PASSWORD | sudo -S rsync -av cuda /usr/local
 fi
